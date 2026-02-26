@@ -1,0 +1,191 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/bitverse/generative-art-contracts/schema/contract-entry.schema.json",
+  "title": "Generative Art Contract Entry",
+  "description": "Schema for a generative art contract registry entry. Supports multiple VMs (EVM, Solana, Tezos).",
+  "type": "object",
+  "required": ["vm_type", "contract_address", "name", "created_at", "sources"],
+  "properties": {
+    "vm_type": {
+      "type": "string",
+      "enum": ["evm", "solana", "tezos"],
+      "description": "The virtual machine / blockchain runtime."
+    },
+    "contract_address": {
+      "type": "string",
+      "description": "The on-chain address of the contract."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable name of the contract or collection."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the entry was added (ISO 8601 date, e.g. 2024-01-15)."
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "url"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["block_explorer", "website", "github", "documentation", "other"],
+            "description": "The type of source."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the source."
+          },
+          "label": {
+            "type": "string",
+            "description": "Optional human-readable label for the source."
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "At least one block_explorer source is required."
+    },
+    "chain_id": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "EVM chain ID."
+    },
+    "network": {
+      "type": "string",
+      "description": "Network identifier for non-EVM chains."
+    },
+    "standard": {
+      "type": "string",
+      "description": "Token standard used by the contract."
+    },
+    "project": {
+      "type": "string",
+      "description": "Parent project or platform name."
+    },
+    "artist": {
+      "type": "string",
+      "description": "Artist or creator name."
+    },
+    "collection_type": {
+      "type": "string",
+      "enum": ["generative", "on-chain", "collaborative", "other"],
+      "description": "Type of generative art collection."
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the contract or collection."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "Tags for categorization."
+    },
+    "deployment_tx": {
+      "type": "string",
+      "description": "Transaction hash of the contract deployment."
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "Whether the contract source code is verified on a block explorer."
+    },
+    "interfaces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "List of interfaces or standards the contract implements."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-form notes about the contract."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "vm_type": { "const": "evm" }
+        },
+        "required": ["vm_type"]
+      },
+      "then": {
+        "required": ["chain_id", "standard"],
+        "properties": {
+          "chain_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "contract_address": {
+            "type": "string",
+            "pattern": "^0x[a-f0-9]{40}$"
+          },
+          "standard": {
+            "type": "string",
+            "enum": ["ERC721", "ERC1155", "OTHER"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "vm_type": { "const": "solana" }
+        },
+        "required": ["vm_type"]
+      },
+      "then": {
+        "required": ["network", "standard"],
+        "properties": {
+          "network": {
+            "type": "string",
+            "enum": ["mainnet-beta", "devnet", "testnet"]
+          },
+          "contract_address": {
+            "type": "string",
+            "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+          },
+          "standard": {
+            "type": "string",
+            "enum": ["SPL", "METAPLEX", "OTHER"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "vm_type": { "const": "tezos" }
+        },
+        "required": ["vm_type"]
+      },
+      "then": {
+        "required": ["network", "standard"],
+        "properties": {
+          "network": {
+            "type": "string",
+            "enum": ["mainnet", "ghostnet"]
+          },
+          "contract_address": {
+            "type": "string",
+            "pattern": "^KT1[a-zA-Z0-9]{33}$"
+          },
+          "standard": {
+            "type": "string",
+            "enum": ["FA2", "OTHER"]
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

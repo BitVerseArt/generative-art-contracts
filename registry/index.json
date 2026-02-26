@@ -1,0 +1,37 @@
+[
+  {
+    "artist": "Dmitri Cherniak",
+    "chain_id": 1,
+    "collection_type": "generative",
+    "contract_address": "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270",
+    "created_at": "2024-01-15",
+    "description": "Art Blocks flagship generative art contract on Ethereum mainnet.",
+    "interfaces": [
+      "ERC721"
+    ],
+    "name": "Art Blocks Curated",
+    "notes": "Hosts multiple generative art projects including Ringers, Fidenza, and Chromie Squiggle.",
+    "project": "Art Blocks",
+    "sources": [
+      {
+        "label": "Etherscan",
+        "type": "block_explorer",
+        "url": "https://etherscan.io/address/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270"
+      },
+      {
+        "label": "Art Blocks",
+        "type": "website",
+        "url": "https://www.artblocks.io"
+      }
+    ],
+    "standard": "ERC721",
+    "tags": [
+      "art-blocks",
+      "curated",
+      "generative"
+    ],
+    "verified": true,
+    "vm_type": "evm",
+    "_path": "registry/evm/ethereum/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270.json"
+  }
+]

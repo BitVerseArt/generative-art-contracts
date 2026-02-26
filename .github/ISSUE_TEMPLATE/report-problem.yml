@@ -1,0 +1,25 @@
+name: Report a Problem
+description: Report incorrect data, a missing contract, or an issue with the registry
+title: "Problem: [Brief Description]"
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "What is wrong? Include the file path or contract address if applicable."
+    validations:
+      required: true
+
+  - type: input
+    id: file_path
+    attributes:
+      label: Registry File Path
+      description: "Path to the affected entry, if applicable"
+      placeholder: "registry/evm/ethereum/0x..."
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: "What should the correct data be?"
