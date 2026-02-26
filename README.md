@@ -1,6 +1,6 @@
 # Generative Art Contracts Registry
 
-A community-editable registry of onchain generative art contracts. This repo stores structured metadata (no source code) for generative art contracts across multiple blockchains.
+A community-editable registry of code based generative art contracts. This repo stores structured metadata (no source code) for generative art contracts across multiple blockchains.
 
 ## Supported VMs
 
