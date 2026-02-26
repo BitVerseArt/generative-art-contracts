@@ -7,8 +7,8 @@ A community-editable registry of code based generative art contracts. This repo 
 | VM | Status | Chains |
 |----|--------|--------|
 | EVM | Active | Ethereum, Base, Optimism, Zora, Polygon, Arbitrum, Shape |
-| Solana | Planned | — |
-| Tezos | Planned | — |
+| Solana | Active | — |
+| Tezos | Active | — |
 
 ## Adding a Contract
 
@@ -20,7 +20,7 @@ A community-editable registry of code based generative art contracts. This repo 
 3. Fill in the required fields (see below)
 4. Run `pnpm validate` to check your entry
 5. Run `pnpm format` to format your file
-6. Open a PR targeting the `dev` branch
+6. Open a PR targeting the `main` branch
 
 ### Required Fields
 
