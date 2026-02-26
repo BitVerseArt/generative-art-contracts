@@ -1,0 +1,63 @@
+name: Add Contract Entry
+description: Request adding a new generative art contract to the registry
+title: "Add: [Contract Name]"
+labels: ["new-entry"]
+body:
+  - type: dropdown
+    id: vm_type
+    attributes:
+      label: VM Type
+      options:
+        - evm
+        - solana
+        - tezos
+    validations:
+      required: true
+
+  - type: input
+    id: chain
+    attributes:
+      label: Chain / Network
+      description: "EVM: chain slug (ethereum, base, etc.) | Solana/Tezos: network name"
+      placeholder: "ethereum"
+    validations:
+      required: true
+
+  - type: input
+    id: contract_address
+    attributes:
+      label: Contract Address
+      placeholder: "0x..."
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Contract / Collection Name
+      placeholder: "Art Blocks Curated"
+    validations:
+      required: true
+
+  - type: input
+    id: standard
+    attributes:
+      label: Token Standard
+      description: "EVM: ERC721/ERC1155/OTHER | Solana: SPL/METAPLEX/OTHER | Tezos: FA2/OTHER"
+      placeholder: "ERC721"
+    validations:
+      required: true
+
+  - type: input
+    id: block_explorer_url
+    attributes:
+      label: Block Explorer URL
+      placeholder: "https://etherscan.io/address/0x..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: "Artist, project name, description, tags, etc."

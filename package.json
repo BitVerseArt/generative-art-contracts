@@ -1,0 +1,29 @@
+{
+  "name": "generative-art-contracts",
+  "version": "0.1.0",
+  "description": "Community-editable registry of onchain generative art contracts.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "tsx scripts/src/validate.ts",
+    "format": "prettier --write 'registry/**/*.json' 'examples/**/*.json' 'schema/**/*.json'",
+    "format:check": "prettier --check 'registry/**/*.json' 'examples/**/*.json' 'schema/**/*.json'",
+    "lint": "tsc --noEmit",
+    "test": "tsx scripts/src/validate.ts",
+    "build:index": "tsx scripts/src/build-index.ts",
+    "new:entry": "tsx scripts/src/new-entry.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.1",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "glob": "^11.0.1",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
